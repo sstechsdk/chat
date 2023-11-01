@@ -7,7 +7,7 @@ require (
 	github.com/gin-gonic/gin v1.9.1
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0
-	github.com/golang/protobuf v1.5.3 // indirect
+	//github.com/golang/protobuf v1.5.3 // indirect
 	github.com/google/uuid v1.3.1
 	github.com/jinzhu/copier v0.3.5 // indirect
 	github.com/lestrrat-go/file-rotatelogs v2.4.0+incompatible // indirect
@@ -27,11 +27,13 @@ require (
 )
 
 require (
-	github.com/OpenIMSDK/protocol v0.0.21
-	github.com/OpenIMSDK/tools v0.0.15
+	github.com/OpenIMSDK/protocol v0.0.30
+	github.com/OpenIMSDK/tools v0.0.14
 	github.com/go-zookeeper/zk v1.0.3
 	github.com/redis/go-redis/v9 v9.1.0
 )
+
+replace github.com/OpenIMSDK/protocol v0.0.30 => github.com/sstechsdk/protocol v0.0.32
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
@@ -53,6 +55,7 @@ require (
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
+	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
 	github.com/jinzhu/now v1.1.5 // indirect

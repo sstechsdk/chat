@@ -19,7 +19,6 @@ import (
 	"fmt"
 	"github.com/OpenIMSDK/chat/pkg/common/config"
 	"strings"
-
 )
 
 func New() (SMS, error) {

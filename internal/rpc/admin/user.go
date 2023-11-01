@@ -19,7 +19,6 @@ import (
 	"strings"
 	"time"
 
-
 	"github.com/OpenIMSDK/chat/pkg/common/constant"
 	"github.com/OpenIMSDK/tools/log"
 

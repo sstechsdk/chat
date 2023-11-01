@@ -49,7 +49,7 @@ echo "==> logs_dir=$logs_dir"
 cd $SCRIPTS_ROOT/..
 
 # CPU core number
-cpu_count=$(lscpu | grep -e '^CPU(s):' | awk '{print $2}')
+cpu_count=$(lscpu | grep -e '^CPU:' | awk '{print $2}')
 echo -e "${GREEN_PREFIX}======> cpu_count=$cpu_count${COLOR_SUFFIX}"
 
 # Count the number of concurrent compilations (half the number of cpus)

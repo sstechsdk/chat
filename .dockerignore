@@ -18,7 +18,7 @@ CHANGELOG/
 .golangci.yml
 
 # Ignore deployment-related files
-docker-compose.yaml
+docker-compose.yml
 deployments/
 
 # Ignore assets

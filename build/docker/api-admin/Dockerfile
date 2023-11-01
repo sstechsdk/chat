@@ -35,18 +35,20 @@ RUN go mod download
 COPY . .
 
 RUN make clean
-RUN make build BINS=admin-api
+RUN make build
 
 FROM ghcr.io/openim-sigs/openim-bash-image:latest
 
 WORKDIR ${CHAT_WORKDIR}
 
-COPY --from=builder ${OPENIM_CHAT_BINDIR}/platforms /openim/openim-chat/_output/bin/platforms
-COPY --from=builder ${OPENIM_CHAT_CONFIG_NAME} /openim/openim-chat/config/config.yaml
+COPY --from=builder ${OPENIM_CHAT_BINDIR} /openim/openim-chat/_output/bin
+COPY --from=builder ${CHAT_WORKDIR}/scripts /openim/openim-server/scripts
+COPY --from=builder ${CHAT_WORKDIR}/config /openim/openim-chat/config
 
-ENV PORT=10009
-EXPOSE 10009
+#ENV PORT=10009
+#EXPOSE 10009
 
-RUN mv ${OPENIM_CHAT_BINDIR}/platforms/$(get_os)/$(get_arch)/admin-api /usr/bin/admin-api
+#RUN mv ${OPENIM_CHAT_BINDIR}/platforms/$(get_os)/$(get_arch)/admin-api /usr/bin/admin-api
 
-ENTRYPOINT ["bash", "-c", "admin-api  --port $PORT -c $OPENIM_CHAT_CONFIG_NAME"]
+#ENTRYPOINT ["bash", "-c", "admin-api  --port $PORT -c $OPENIM_CHAT_CONFIG_NAME"]
+CMD ["/openim/openim-chat/scripts/docker-start-all.sh"]
