@@ -20,6 +20,14 @@ zookeeper:
   username: ""
   password: ""
 
+mongo:
+  uri: ''
+  address: [ 127.0.0.1:37017 ]
+  database: openIM_v3
+  username: root
+  password: openIM123
+  maxPoolSize: 100
+
 chatApi:
   openImChatApiPort: [ 10008 ]
   listenIP:
@@ -35,9 +43,11 @@ rpc:
 rpcPort:
   openImAdminPort: [ 30200 ]
   openImChatPort: [ 30300 ]
+  openImOauth2Port: [ 30400 ]
 rpcRegisterName:
   openImAdminName: admin
   openImChatName: chat
+  openImOauth2Name: oauth
 
 # 没有配置表示和OpenIM一致
 mysql:
@@ -99,6 +109,15 @@ adminList:
 openIMUrl: "http://127.0.0.1:10002"
 
 redis:
-  # address: [ 127.0.0.1:16379 ]
-  # username:
-  # password: openIM123
+   address: [ 127.0.0.1:16379 ]
+   username:
+   password: openIM123
+   db: 15
+
+oauth:
+  accessTokenExp: 200  #hour
+  refreshTokenExp: 200
+  isGenerateRefresh: 1  # 1 or 0
+  tokenStore: file  # mongo  redis  memory file
+
+

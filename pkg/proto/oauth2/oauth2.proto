@@ -1,0 +1,42 @@
+syntax = "proto3";
+package OpenIMChat.oauth2;
+import "google/protobuf/timestamp.proto";
+option go_package = "github.com/OpenIMSDK/chat/pkg/proto/oauth";
+
+message AuthorizeReq{
+  string userID = 1;
+}
+
+message AuthorizeResp{
+  string code = 1;
+}
+
+message TokenReq{
+  string code = 1;
+}
+
+message TokenResp{
+  string clientID = 1;
+  string userID = 2;
+  string redirectURI=3;
+  string scope=4;
+  string code=5;
+  string codeChallenge=6;
+  string codeChallengeMethod=7;
+  google.protobuf.Timestamp codeCreateAt=8;
+  int64 codeExpiresIn=9;
+  string access=10;
+  google.protobuf.Timestamp accessCreateAt=11;
+  int64 accessExpiresIn=12;
+  string refresh=13;
+  google.protobuf.Timestamp refreshCreateAt=14;
+  int64 refreshExpiresIn=15;
+}
+
+
+service oauth2 {
+  //获取code
+  rpc Authorize(AuthorizeReq) returns(AuthorizeResp);
+  //获取access_token
+  rpc Token(TokenReq) returns(TokenResp);
+}

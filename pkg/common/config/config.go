@@ -26,6 +26,14 @@ var Config struct {
 		Username string   `yaml:"username"`
 		Password string   `yaml:"password"`
 	} `yaml:"zookeeper"`
+	Mongo struct {
+		Uri         string   `yaml:"uri"`
+		Address     []string `yaml:"address"`
+		Database    string   `yaml:"database"`
+		Username    string   `yaml:"username"`
+		Password    string   `yaml:"password"`
+		MaxPoolSize int      `yaml:"maxPoolSize"`
+	} `yaml:"mongo"`
 	ChatApi struct {
 		GinPort  []int  `yaml:"openImChatApiPort"`
 		ListenIP string `yaml:"listenIP"`
@@ -42,14 +50,16 @@ var Config struct {
 		Address  *[]string `yaml:"address"`
 		Username *string   `yaml:"username"`
 		Password *string   `yaml:"password"`
+		DB       *int      `yaml:"db"`
 	} `yaml:"redis"`
 	RpcPort struct {
 		OpenImAdminPort []int `yaml:"openImAdminPort"`
 		OpenImChatPort  []int `yaml:"openImChatPort"`
 	} `yaml:"rpcPort"`
 	RpcRegisterName struct {
-		OpenImAdminName string `yaml:"openImAdminName"`
-		OpenImChatName  string `yaml:"openImChatName"`
+		OpenImAdminName  string `yaml:"openImAdminName"`
+		OpenImChatName   string `yaml:"openImChatName"`
+		OpenImOauth2Name string `yaml:"openImOauth2Name"`
 	} `yaml:"rpcRegisterName"`
 	Mysql struct {
 		Address       *[]string `yaml:"address"`
@@ -93,6 +103,13 @@ var Config struct {
 	} `yaml:"verifyCode"`
 	ProxyHeader string  `yaml:"proxyHeader"`
 	AdminList   []Admin `yaml:"adminList"`
+
+	Oauth struct {
+		AccessTokenExp    int    `yaml:"accessTokenExp"`
+		RefreshTokenExp   int    `yaml:"refreshTokenExp"`
+		IsGenerateRefresh int    `yaml:"isGenerateRefresh"`
+		TokenStore        string `yaml:"tokenStore"`
+	} `yaml:"oauth"`
 }
 
 type Admin struct {
