@@ -38,7 +38,7 @@ require (
 	github.com/redis/go-redis/v9 v9.1.0
 )
 
-replace github.com/OpenIMSDK/protocol v0.0.30 => github.com/sstechsdk/protocol v0.0.36
+replace github.com/OpenIMSDK/protocol v0.0.30 => ../protocol
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
