@@ -263,7 +263,7 @@ func (o *Oauth2Api) Credentials(c *gin.Context) {
 	credentialsResponse.Code = 1
 	credentialsResponse.Message = "success"
 	timestamp := time.Now().UnixNano() / int64(time.Millisecond)
-	appUrl := fmt.Sprint("http://127.0.0.1:10008/auth/code?client_id=", clientID, "&redirect_uri=", client.GetCallbackUrl(), "&response_type=token&scope=all&state=", timestamp)
+	appUrl := fmt.Sprint("http://103.225.11.21:10008/auth/code?client_id=", clientID, "&redirect_uri=", client.GetCallbackUrl(), "&response_type=token&scope=all&state=", timestamp)
 	//credentialsResponse.ClientSecret = clientSecret
 
 	apiresp.GinSuccess(c, appUrl)
