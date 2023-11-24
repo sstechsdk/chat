@@ -32,7 +32,7 @@ func main() {
 	flag.StringVar(&configFile, "config_folder_path", "../config/config.yaml", "Config full path")
 
 	var rpcPort int
-
+	// lsof -i :30200 | grep LISTEN | awk '{print $2}' | xargs kill
 	flag.IntVar(&rpcPort, "port", 30200, "get rpc ServerPort from cmd")
 
 	var hide bool

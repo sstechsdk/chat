@@ -17,8 +17,8 @@ package apicall
 import (
 	"context"
 	"fmt"
-
 	"github.com/OpenIMSDK/chat/pkg/common/config"
+	"github.com/OpenIMSDK/chat/pkg/common/db/model/oauth"
 	"github.com/OpenIMSDK/protocol/auth"
 	"github.com/OpenIMSDK/protocol/constant"
 	"github.com/OpenIMSDK/protocol/friend"
@@ -38,6 +38,7 @@ type CallerInterface interface {
 	FindGroupInfo(ctx context.Context, groupIDs []string) ([]*sdkws.GroupInfo, error)
 	UserRegisterCount(ctx context.Context, start int64, end int64) (map[string]int64, int64, error)
 	FriendUserIDs(ctx context.Context, userID string) ([]string, error)
+	GetThirdApp(ctx context.Context, appId string) (*oauth.AuthResp, error)
 }
 
 type Caller struct{}
@@ -139,4 +140,12 @@ func (c *Caller) FriendUserIDs(ctx context.Context, userID string) ([]string, er
 		return nil, err
 	}
 	return resp.FriendIDs, nil
+}
+
+func (c *Caller) GetThirdApp(ctx context.Context, appId string) (*oauth.AuthResp, error) {
+	resp, err := getThirdApp.Call(ctx, &appId)
+	if err != nil {
+		return nil, err
+	}
+	return resp, nil
 }

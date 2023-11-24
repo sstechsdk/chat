@@ -16,6 +16,7 @@ package apicall
 
 import (
 	"github.com/OpenIMSDK/chat/pkg/common/config"
+	"github.com/OpenIMSDK/chat/pkg/common/db/model/oauth"
 	"github.com/OpenIMSDK/protocol/auth"
 	"github.com/OpenIMSDK/protocol/friend"
 	"github.com/OpenIMSDK/protocol/group"
@@ -24,6 +25,10 @@ import (
 
 func imApi() string {
 	return config.Config.OpenIMUrl
+}
+
+func javaApi() string {
+	return config.Config.OpenJavaUrl
 }
 
 // im caller.
@@ -37,4 +42,5 @@ var (
 	getGroupsInfo     = NewApiCaller[group.GetGroupsInfoReq, group.GetGroupsInfoResp]("/group/get_groups_info", imApi)
 	registerUserCount = NewApiCaller[user.UserRegisterCountReq, user.UserRegisterCountResp]("/statistics/user/register", imApi)
 	friendUserIDs     = NewApiCaller[friend.GetFriendIDsReq, friend.GetFriendIDsResp]("/friend/get_friend_id", imApi)
+	getThirdApp       = NewApiCaller[string, oauth.AuthResp]("/sys/api/v1/auth/third_app", javaApi)
 )

@@ -59,12 +59,12 @@ func NewChatRoute(router gin.IRouter, discov discoveryregistry.SvcDiscoveryRegis
 	logs := router.Group("/logs", mw.CheckToken)
 	logs.POST("/upload", chat.UploadLogs)
 
-	oauth2 := NewOauth2()
+	oauth2 := NewOauth2(chatConn)
 	auth := router.Group("/auth")
 	{
-		auth.GET("/code", oauth2.CodeRequest)
+		auth.GET("/code", mw.CheckToken, oauth2.CodeRequest)
 		auth.GET("/token", oauth2.TokenRequest)
-		auth.GET("/credential", oauth2.Credentials)
+		auth.POST("/credential", oauth2.Credentials)
 		auth.GET("/getuserinfo", oauth2.GetUserInfo)
 
 	}

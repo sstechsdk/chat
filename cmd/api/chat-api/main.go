@@ -43,6 +43,7 @@ func main() {
 
 	// defaultPorts := config.Config.ChatApi.GinPort
 	var ginPort int
+	// lsof -i :10008 | grep LISTEN | awk '{print $2}' | xargs kill
 	flag.IntVar(&ginPort, "port", 10008, "get ginServerPort from cmd")
 
 	var hide bool

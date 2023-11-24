@@ -5,6 +5,7 @@ go 1.18
 require (
 	github.com/OpenIMSDK/open_utils v1.0.8
 	github.com/gin-gonic/gin v1.9.1
+	github.com/go-oauth2/redis/v4 v4.1.1
 	github.com/gogo/protobuf v1.3.2 // indirect
 	github.com/golang-jwt/jwt/v4 v4.5.0
 	//github.com/golang/protobuf v1.5.3 // indirect
@@ -14,9 +15,6 @@ require (
 	github.com/pkg/errors v0.9.1
 	google.golang.org/grpc v1.58.0
 	google.golang.org/protobuf v1.31.0
-	gopkg.in/go-oauth2/mongo.v3 v3.1.1
-	gopkg.in/go-oauth2/redis.v3 v3.2.1
-	gopkg.in/oauth2.v3 v3.12.0
 	gopkg.in/yaml.v3 v3.0.1
 	gorm.io/driver/mysql v1.5.1
 	gorm.io/gorm v1.25.4
@@ -32,13 +30,17 @@ require (
 require (
 	github.com/OpenIMSDK/protocol v0.0.30
 	github.com/OpenIMSDK/tools v0.0.14
-	github.com/go-redis/redis v6.15.6+incompatible
+	github.com/go-oauth2/oauth2/v4 v4.5.2
+	github.com/go-redis/redis/v8 v8.11.5
 	github.com/go-session/session v3.1.2+incompatible
 	github.com/go-zookeeper/zk v1.0.3
 	github.com/redis/go-redis/v9 v9.1.0
 )
 
-replace github.com/OpenIMSDK/protocol v0.0.30 => ../protocol
+replace (
+	github.com/OpenIMSDK/protocol v0.0.30 => ../protocol
+	github.com/go-oauth2/oauth2/v4 => ../oauth2
+)
 
 require (
 	github.com/alibabacloud-go/alibabacloud-gateway-spi v0.0.4 // indirect
@@ -53,15 +55,14 @@ require (
 	github.com/cespare/xxhash/v2 v2.2.0 // indirect
 	github.com/chenzhuoyu/base64x v0.0.0-20221115062448-fe3a3abad311 // indirect
 	github.com/clbanning/mxj/v2 v2.5.6 // indirect
-	github.com/dgrijalva/jwt-go v3.2.0+incompatible // indirect
 	github.com/dgryski/go-rendezvous v0.0.0-20200823014737-9f7001d12a5f // indirect
 	github.com/gabriel-vasile/mimetype v1.4.2 // indirect
 	github.com/gin-contrib/sse v0.1.0 // indirect
-	github.com/globalsign/mgo v0.0.0-20181015135952-eeefdecb41b8 // indirect
 	github.com/go-playground/locales v0.14.1 // indirect
 	github.com/go-playground/universal-translator v0.18.1 // indirect
 	github.com/go-playground/validator/v10 v10.14.0 // indirect
 	github.com/goccy/go-json v0.10.2 // indirect
+	github.com/golang-jwt/jwt v3.2.2+incompatible // indirect
 	github.com/golang/protobuf v1.5.3 // indirect
 	github.com/golang/snappy v0.0.4 // indirect
 	github.com/jinzhu/inflection v1.0.0 // indirect
@@ -78,12 +79,12 @@ require (
 	github.com/montanaflynn/stats v0.0.0-20171201202039-1bf9dbcd8cbe // indirect
 	github.com/nfnt/resize v0.0.0-20180221191011-83c6a9932646 // indirect
 	github.com/pelletier/go-toml/v2 v2.0.8 // indirect
-	github.com/tidwall/btree v0.0.0-20170113224114-9876f1454cf0 // indirect
-	github.com/tidwall/buntdb v1.1.0 // indirect
-	github.com/tidwall/gjson v1.3.2 // indirect
+	github.com/tidwall/btree v0.0.0-20191029221954-400434d76274 // indirect
+	github.com/tidwall/buntdb v1.1.2 // indirect
+	github.com/tidwall/gjson v1.12.1 // indirect
 	github.com/tidwall/grect v0.0.0-20161006141115-ba9a043346eb // indirect
-	github.com/tidwall/match v1.0.1 // indirect
-	github.com/tidwall/pretty v1.0.0 // indirect
+	github.com/tidwall/match v1.1.1 // indirect
+	github.com/tidwall/pretty v1.2.0 // indirect
 	github.com/tidwall/rtree v0.0.0-20180113144539-6cd427091e0e // indirect
 	github.com/tidwall/tinyqueue v0.0.0-20180302190814-1e39f5511563 // indirect
 	github.com/tjfoc/gmsm v1.3.2 // indirect

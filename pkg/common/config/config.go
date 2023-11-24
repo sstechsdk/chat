@@ -83,6 +83,7 @@ var Config struct {
 	} `yaml:"log"`
 	Secret      *string `yaml:"secret"`
 	OpenIMUrl   string  `yaml:"openIMUrl"`
+	OpenJavaUrl string  `yaml:"openJavaUrl"`
 	TokenPolicy struct {
 		Expire *int64 `yaml:"expire"`
 	} `yaml:"tokenPolicy"`

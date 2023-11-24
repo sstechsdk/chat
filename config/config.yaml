@@ -107,7 +107,7 @@ adminList:
 
 
 openIMUrl: "http://127.0.0.1:10002"
-
+openJavaUrl: "http://192.168.0.105:7003"
 redis:
    address: [ 127.0.0.1:16379 ]
    username:

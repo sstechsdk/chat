@@ -41,6 +41,11 @@ func (o *MW) parseToken(c *gin.Context) (string, int32, string, error) {
 	if token == "" {
 		return "", 0, "", errs.ErrArgs.Wrap("token is empty")
 	}
+	// 添加了operationID的處理邏輯
+	if operationID, _ := c.Value(constant.RpcOperationID).(string); operationID == "" {
+		c.Set(constant.RpcOperationID, c.GetHeader(constant.RpcOperationID))
+		log.ZDebug(c, "reset operationID", "operationID", c.Value(constant.RpcOperationID))
+	}
 	resp, err := o.client.ParseToken(c, &admin.ParseTokenReq{Token: token})
 	if err != nil {
 		return "", 0, "", err
