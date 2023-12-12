@@ -184,6 +184,21 @@ func (o *chatSvr) genUserID() string {
 	return string(data)
 }
 
+func (o *chatSvr) genKefuUserID() string {
+	const l = 15
+	data := make([]byte, l)
+	rand.Read(data)
+	chars := []byte("0123456789")
+	for i := 0; i < len(data); i++ {
+		if i == 0 {
+			data[i] = chars[1:][data[i]%9]
+		} else {
+			data[i] = chars[data[i]%10]
+		}
+	}
+	return string(data)
+}
+
 func (o *chatSvr) genVerifyCode() string {
 	data := make([]byte, config.Config.VerifyCode.Len)
 	rand.Read(data)
@@ -239,7 +254,13 @@ func (o *chatSvr) RegisterUser(ctx context.Context, req *chat.RegisterUserReq) (
 	log.ZDebug(ctx, "usedInvitationCode", usedInvitationCode)
 	if req.User.UserID == "" {
 		for i := 0; i < 20; i++ {
-			userID := o.genUserID()
+			var userID string
+			if req.User.Email == "" {
+				userID = o.genUserID()
+			} else {
+				userID = o.genKefuUserID()
+			}
+
 			_, err := o.Database.GetUser(ctx, userID)
 			if err == nil {
 				continue
