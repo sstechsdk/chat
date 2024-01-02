@@ -46,7 +46,7 @@ func (o *Attribute) Update(ctx context.Context, userID string, data map[string]a
 
 func (o *Attribute) Find(ctx context.Context, userIds []string) ([]*chat.Attribute, error) {
 	var a []*chat.Attribute
-	return a, errs.Wrap(o.db.WithContext(ctx).Where("user_id in (?)", userIds).Find(&a).Error)
+	return a, errs.Wrap(o.db.WithContext(ctx).Where("user_id in (?) or phone_number in (?)", userIds, userIds).Find(&a).Error)
 }
 
 func (o *Attribute) FindAccount(ctx context.Context, accounts []string) ([]*chat.Attribute, error) {
